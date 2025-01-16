@@ -2,4 +2,3 @@
 /.idea
 /.pytest_cache
 .gitignore
-/.pytest_cache.p
