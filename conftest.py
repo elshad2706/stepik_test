@@ -10,7 +10,7 @@ def pytest_addoption(parser):
                      help='Write language in consol,for example:"--language=en" or "--language=ru"and other es,fr..')
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture()
 def browser(request):
     browser_name = request.config.getoption("browser_name")
     language = request.config.getoption("language")
