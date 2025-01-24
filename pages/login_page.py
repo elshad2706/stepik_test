@@ -10,7 +10,7 @@ class LoginPage(BasePage):
 
     def should_be_login_url(self):
         # реализуйте проверку на корректный url адрес
-        assert "login" in self.browser.link,"Отсутствует логин в поле url"
+        assert "login" in self.browser.current_url, "Отсутствует логин в поле url"
 
     def should_be_login_form(self):
         # реализуйте проверку, что есть форма логина
@@ -22,5 +22,5 @@ class LoginPage(BasePage):
         # реализуйте проверку, что есть форма регистрации на странице
         assert self.is_element_present(*RegistrPageLocators.INPUT_EMAIL), "Отсутствует инпут логина"
         assert self.is_element_present(*RegistrPageLocators.INPUT_PASSWORD), "Отсутствует инпут пароля"
-        assert self.is_element_present(*RegistrPageLocators.INPUT_REPEAT_PASSWORD),"Отсуствует инпут повторного ввода пароля"
+        assert self.is_element_present(*RegistrPageLocators.INPUT_REPEAT_PASSWORD),"Отсутствует инпут повторного ввода пароля"
         assert self.is_element_present(*RegistrPageLocators.BUTTON_REGISTRATION_SUBMIT), "Отсуствует кнопка войти"
