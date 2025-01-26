@@ -2,6 +2,11 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR,"#login_link")
+    ADD_TO_BASKET = (By.CSS_SELECTOR,".btn.btn-lg.btn-primary")
+    NAME_ITEM = (By.XPATH,"/html/body/div[2]/div/div[2]/div[2]/article/div[1]/div[2]/h1")
+    PRICE_VALUE = (By.XPATH,"/html/body/div[2]/div/div[2]/div[2]/article/div[1]/div[2]/p[1]")
+    MESSAGE_ADDED_TO_BASKET = (By.XPATH,"/html/body/div[2]/div/div[1]/div[1]/div")
+    MESSAGE_PRICE_IN_BASKET = (By.XPATH,"/html/body/div[2]/div/div[1]/div[3]/div/p[1]/strong")
 class LoginPageLocators():
     INPUT_EMAIL = (By.CSS_SELECTOR,"#id_login-username")
     INPUT_PASSWORD = (By.CSS_SELECTOR,"#id_login-password")
