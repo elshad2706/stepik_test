@@ -11,14 +11,24 @@ class BasePage:
         self.browser = browser
         self.link = link
         self.browser.implicitly_wait(timeout)
+
     def open(self):
         self.browser.get(self.link)
+
     def is_element_present(self,how,what):
         try:
             self.browser.find_element(how,what)
         except NoSuchElementException:
             return False
         return True
+
+    def get_element_text(self, how, what):
+        try:
+            element = self.browser.find_element(how, what)
+            print("элемент 2 -------------",element.text)
+            return element.text
+        except NoSuchElementException:
+            return None  # Если элемент не найден, вернуть None
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
@@ -31,7 +41,6 @@ class BasePage:
             alert_text = alert.text
             print(f"Your code: {alert_text}")
             alert.accept()
-            time.sleep(100000)
         except NoAlertPresentException:
             print("No second alert presented")
 
