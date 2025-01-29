@@ -14,6 +14,7 @@ class BasePage:
 
     def open(self):
         self.browser.get(self.link)
+        self.browser.maximize_window()
 
     def is_element_present(self,how,what):
         try:
@@ -25,7 +26,6 @@ class BasePage:
     def get_element_text(self, how, what):
         try:
             element = self.browser.find_element(how, what)
-            print("элемент 2 -------------",element.text)
             return element.text
         except NoSuchElementException:
             return None  # Если элемент не найден, вернуть None
