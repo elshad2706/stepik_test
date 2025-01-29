@@ -16,6 +16,7 @@ class ProductPage(BasePage):
             EC.visibility_of_element_located(MainPageLocators.NAME_ITEM))
         print("элемент 2 -----------",name_item.text)
         return name_item.text
+
     def get_price_before(self):
         price_value = WebDriverWait(self.browser,10).until(
             EC.visibility_of_element_located(MainPageLocators.PRICE_VALUE))
@@ -25,8 +26,8 @@ class ProductPage(BasePage):
         assert "has been added to your basket" in message_text,"Отсутствует сообщение о добавление товара в корзину"
 
         name_item = self.get_element_text(*MainPageLocators.MESSAGE_ADDED_TO_BASKET)
-        # time.sleep(100000)
         assert ProductPage.get_item_before(self) in name_item,"Название товара в сообщении, о добавлении в корзину, не совпадает с товаром, который мы добавили"
 
         price_of_basket = self.get_element_text(*MainPageLocators.MESSAGE_PRICE_IN_BASKET)
         assert ProductPage.get_price_before(self) in price_of_basket,"Стоимость корзины не совпадает с ценой товара"
+
