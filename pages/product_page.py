@@ -21,11 +21,10 @@ class ProductPage(BasePage):
             EC.visibility_of_element_located(MainPageLocators.PRICE_VALUE))
         return price_value.text
     def compare_item_and_price_after(self):
-        message_text = self.get_element_text(*MainPageLocators.MESSAGE_ADDED_TO_BASKET)
-        assert "has been added to your basket" in message_text,"Отсутствует сообщение о добавление товара в корзину"
-
-        name_item = self.get_element_text(*MainPageLocators.MESSAGE_ADDED_TO_BASKET)
-        assert ProductPage.get_item_before(self) in name_item,"Название товара в сообщении, о добавлении в корзину, не совпадает с товаром, который мы добавили"
+        message_full_text = self.get_element_text(*MainPageLocators.MESSAGE_ADDED_TO_BASKET)
+        print("спарсенный текст",message_full_text)
+        print(f"{ProductPage.get_item_before(self)} has been added to your basket.")
+        assert f"{ProductPage.get_item_before(self)} has been added to your basket." == message_full_text, "Отсутствует сообщение о добавление товара в корзину"
 
         price_of_basket = self.get_element_text(*MainPageLocators.MESSAGE_PRICE_IN_BASKET)
         assert ProductPage.get_price_before(self) in price_of_basket,"Стоимость корзины не совпадает с ценой товара"
