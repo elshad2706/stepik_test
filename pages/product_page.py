@@ -11,6 +11,7 @@ class ProductPage(BasePage):
     def add_to_basket(self):
         button_basket = self.browser.find_element(*MainPageLocators.ADD_TO_BASKET)
         button_basket.click()
+
     def get_item_before(self):
         name_item = WebDriverWait(self.browser,10).until(
             EC.visibility_of_element_located(MainPageLocators.NAME_ITEM))
@@ -28,5 +29,9 @@ class ProductPage(BasePage):
 
         price_of_basket = self.get_element_text(*MainPageLocators.MESSAGE_PRICE_IN_BASKET)
         assert ProductPage.get_price_before(self) in price_of_basket,"Стоимость корзины не совпадает с ценой товара"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*MainPageLocators.)
+
 
 
