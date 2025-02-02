@@ -31,7 +31,7 @@ class ProductPage(BasePage):
         assert ProductPage.get_price_before(self) in price_of_basket,"Стоимость корзины не совпадает с ценой товара"
 
     def should_not_be_success_message(self):
-        assert self.is_not_element_present(*MainPageLocators.)
+        assert self.is_not_element_present(*MainPageLocators.MESSAGE_ADDED_TO_BASKET),"Успешное сообщение присутствует,но не должен был быть"
 
 
 

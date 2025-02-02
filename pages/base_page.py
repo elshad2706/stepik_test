@@ -26,13 +26,13 @@ class BasePage:
             return False
         return True
 
-    def is_not_element_present(self,how,what,timeout=4): #упадет,как только увидит искомый элемент.Не появился:успех,тест зеленый
+    def is_not_element_present(self,how,what,timeout=4): #упадет,как только увидит отысковаемый элемент.Не появился:успех,тест зеленый
         try:
             WebDriverWait(self.browser,timeout).until(
                 EC.presence_of_element_located((how,what)))
         except TimeoutException:
-            return False
-        return True
+            return True
+        return False
 
     def is_disappeared(self,how,what,timeout=5): #будет ждать до тех пор, пока элемент не исчезнет.
         try:
