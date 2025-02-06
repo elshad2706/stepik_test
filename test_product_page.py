@@ -22,3 +22,9 @@ def test_guest_can_add_product_to_basket(link,browser):
     product_page.add_to_basket()
     product_page.solve_quiz_and_get_code()
     product_page.compare_item_and_price_after()
+
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_login_link()

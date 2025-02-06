@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
-from .locators import RegistrPageLocators
+from .locators import RegisterPageLocators
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
@@ -20,7 +20,7 @@ class LoginPage(BasePage):
         assert self.is_element_present(*LoginPageLocators.FORGET_PASSWORD),"Отсутствует кнопка забыли пароль"
     def should_be_register_form(self):
         # реализуйте проверку, что есть форма регистрации на странице
-        assert self.is_element_present(*RegistrPageLocators.INPUT_EMAIL), "Отсутствует инпут логина"
-        assert self.is_element_present(*RegistrPageLocators.INPUT_PASSWORD), "Отсутствует инпут пароля"
-        assert self.is_element_present(*RegistrPageLocators.INPUT_REPEAT_PASSWORD),"Отсутствует инпут повторного ввода пароля"
-        assert self.is_element_present(*RegistrPageLocators.BUTTON_REGISTRATION_SUBMIT), "Отсуствует кнопка войти"
+        assert self.is_element_present(*RegisterPageLocators.INPUT_EMAIL), "Отсутствует инпут логина"
+        assert self.is_element_present(*RegisterPageLocators.INPUT_PASSWORD), "Отсутствует инпут пароля"
+        assert self.is_element_present(*RegisterPageLocators.INPUT_REPEAT_PASSWORD), "Отсутствует инпут повторного ввода пароля"
+        assert self.is_element_present(*RegisterPageLocators.BUTTON_REGISTRATION_SUBMIT), "Отсуствует кнопка войти"
