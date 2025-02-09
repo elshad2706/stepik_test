@@ -32,9 +32,7 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.should_be_login_link()
 
 
-
 def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link_2)
     page.open()
     page.go_to_login_page()
-
