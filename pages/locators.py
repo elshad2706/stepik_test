@@ -12,6 +12,7 @@ class MainPageLocators:
     PRICE_VALUE = (By.XPATH, "/html/body/div[2]/div/div[2]/div[2]/article/div[1]/div[2]/p[1]")
     MESSAGE_ADDED_TO_BASKET = (By.XPATH, "/html/body/div[2]/div/div[1]/div[1]/div")
     MESSAGE_PRICE_IN_BASKET = (By.XPATH, "/html/body/div[2]/div/div[1]/div[3]/div/p[1]/strong")
+    VIEW_BASKET = (By.CSS_SELECTOR, ".btn-group")
 
 
 class LoginPageLocators:
@@ -31,3 +32,9 @@ class RegisterPageLocators:
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+
+
+class BasketPageLocators:
+    TEXT_EMPTY_BASKET = (By.XPATH, "/html/body/div[2]/div/div[3]/div[2]/p/text()")
+
+

@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import math
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoAlertPresentException
-from .locators import BasePageLocators
+from .locators import *
 
 
 class BasePage:
@@ -42,6 +42,10 @@ class BasePage:
         except TimeoutException:
             return True
         return False
+
+    def quest_click_button_see_basket(self):
+        view_basket = self.browser.find_element(*MainPageLocators.VIEW_BASKET)
+        view_basket.click()
 
     def is_disappeared(self, how, what, timeout=4):  # будет ждать до тех пор, пока элемент не исчезнет.
         try:
