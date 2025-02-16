@@ -20,4 +20,9 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     browser.get(link)
     page = BasketPage(browser, link)
     page.open()
+    page.quest_click_button_view_basket()
+    page.product_is_not_exist_in_basket()
+    page.text_about_basket_empty()
+
+
 

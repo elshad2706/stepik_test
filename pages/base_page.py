@@ -43,9 +43,9 @@ class BasePage:
             return True
         return False
 
-    def quest_click_button_see_basket(self):
-        view_basket = self.browser.find_element(*MainPageLocators.VIEW_BASKET)
-        view_basket.click()
+    def quest_click_button_view_basket(self):
+        WebDriverWait(self.browser, 5).until(
+            EC.presence_of_element_located(MainPageLocators.VIEW_BASKET)).click()
 
     def is_disappeared(self, how, what, timeout=4):  # будет ждать до тех пор, пока элемент не исчезнет.
         try:
