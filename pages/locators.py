@@ -35,7 +35,7 @@ class BasePageLocators:
 
 
 class BasketPageLocators:
-    TEXT_EMPTY_BASKET = (By.ID, "content_inner")
-    ITEM_ON_BASKET = (By.CSS_SELECTOR,".col-sm-4")
+    TEXT_EMPTY_BASKET = (By.XPATH, "/html/body/div[2]/div/div[3]/div[2]/p")
+    ITEM_ON_BASKET = (By.CSS_SELECTOR,".col-sm-3.h3")
 
 

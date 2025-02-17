@@ -1,8 +1,11 @@
+import time
+
 from selenium.webdriver.common.by import By
 from .pages.main_page import MainPage
 from selenium import webdriver
 from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
+from .pages.product_page import ProductPage
 
 
 def test_guest_can_go_to_login_page(browser):
@@ -30,6 +33,8 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     browser.get(link)
     page = BasketPage(browser, link)
     page.open()
+    basket = ProductPage(browser,link)
+    basket.add_to_basket()
     page.quest_click_button_view_basket()
     page.product_is_not_exist_in_basket()
     page.text_about_basket_empty()
