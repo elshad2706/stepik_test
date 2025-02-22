@@ -29,8 +29,7 @@ class TestLoginFromMainPage:
         page.product_is_not_exist_in_basket()
         page.text_about_basket_empty()
 
-    def test_guest_cant_see_product_in_basket_opened_from_product_page(self,
-                                                                       browser):
+    def test_guest_cant_see_product_in_basket_opened_from_product_page(self,browser):
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/"
         browser.get(link)
         page = BasketPage(browser, link)

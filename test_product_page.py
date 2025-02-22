@@ -36,3 +36,22 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link_2)
     page.open()
     page.go_to_login_page()
+
+
+class TestUserAddToBasketFromProductPage:
+    def test_user_cant_see_success_message(self,browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+        browser.get(link)
+        product_page = ProductPage(browser, link)
+        product_page.open()
+        product_page.should_not_be_success_message()
+
+    def test_user_can_add_product_to_basket(self, browser):
+        browser.get(link)
+        product_page = ProductPage(browser, link)
+        product_page.open()
+        product_page.get_item_before()
+        product_page.get_price_before()
+        product_page.add_to_basket()
+        product_page.solve_quiz_and_get_code()
+        product_page.compare_item_and_price_after()
