@@ -1,6 +1,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from .pages.login_page import LoginPage
 from .pages.product_page import ProductPage
 from .pages.base_page import BasePage
 import pytest
@@ -11,6 +12,7 @@ bugged_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_20
 okey_link1 = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"
 okey_link2 = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8"
 link_2 = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+link_auth = "https://selenium1py.pythonanywhere.com/ru/accounts/login/"
 
 
 @pytest.mark.parametrize('link', urls)
@@ -39,7 +41,15 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
 
 
 class TestUserAddToBasketFromProductPage:
-    def test_user_cant_see_success_message(self,browser):
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        browser.get(link_auth)
+        login_page = LoginPage(browser, link_auth)
+        email = str(time.time()) + "@fakemail.org"
+        login_page.register_new_user(email, "Qawsrf123124@")
+        login_page.should_be_authorized_user()
+
+    def test_user_cant_see_success_message(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
         browser.get(link)
         product_page = ProductPage(browser, link)

@@ -38,5 +38,7 @@ class LoginPage(BasePage):
             EC.presence_of_element_located(*RegisterPageLocators.INPUT_PASSWORD)).send_keys(password)
         WebDriverWait(self.browser, 3).until(
             EC.presence_of_element_located(*RegisterPageLocators.INPUT_REPEAT_PASSWORD)).send_keys(password)
+        WebDriverWait(self.browser, 3).until(
+            EC.presence_of_element_located(*RegisterPageLocators.BUTTON_REGISTRATION_SUBMIT)).click()
 
 
