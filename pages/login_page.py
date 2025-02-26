@@ -33,12 +33,12 @@ class LoginPage(BasePage):
 
     def register_new_user(self, email, password):
         WebDriverWait(self.browser, 3).until(
-            EC.presence_of_element_located(*RegisterPageLocators.INPUT_EMAIL)).send_keys(email)
+            EC.presence_of_element_located(RegisterPageLocators.INPUT_EMAIL)).send_keys(email)
         WebDriverWait(self.browser, 3).until(
-            EC.presence_of_element_located(*RegisterPageLocators.INPUT_PASSWORD)).send_keys(password)
+            EC.presence_of_element_located(RegisterPageLocators.INPUT_PASSWORD)).send_keys(password)
         WebDriverWait(self.browser, 3).until(
-            EC.presence_of_element_located(*RegisterPageLocators.INPUT_REPEAT_PASSWORD)).send_keys(password)
+            EC.presence_of_element_located(RegisterPageLocators.INPUT_REPEAT_PASSWORD)).send_keys(password)
         WebDriverWait(self.browser, 3).until(
-            EC.presence_of_element_located(*RegisterPageLocators.BUTTON_REGISTRATION_SUBMIT)).click()
+            EC.presence_of_element_located(RegisterPageLocators.BUTTON_REGISTRATION_SUBMIT)).click()
 
 
