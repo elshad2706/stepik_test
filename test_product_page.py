@@ -42,27 +42,22 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
 
 class TestUserAddToBasketFromProductPage:
     @pytest.fixture(scope="function",autouse=True)
-    def setup(self,browser):
-        # browser = webdriver.Chrome()
+    def setup(self, browser):
         login_page = LoginPage(browser, link_auth)
         login_page.open()
         email = str(time.time()) + "@fakemail.org"
         login_page.register_new_user(email, "Qawsrf123124@")
         login_page.should_be_authorized_user()
 
-    def test_user_cant_see_success_message(self, setup, browser):
-        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-        browser.get(link)
+    def test_user_cant_see_success_message(self, browser):
         product_page = ProductPage(browser, link)
         product_page.open()
         product_page.should_not_be_success_message()
 
     def test_user_can_add_product_to_basket(self, browser):
-        browser.get(link)
         product_page = ProductPage(browser, link)
         product_page.open()
         product_page.get_item_before()
         product_page.get_price_before()
         product_page.add_to_basket()
-        # product_page.solve_quiz_and_get_code()
         product_page.compare_item_and_price_after()
