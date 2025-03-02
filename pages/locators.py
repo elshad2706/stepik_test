@@ -29,15 +29,12 @@ class RegisterPageLocators:
     BUTTON_REGISTRATION_SUBMIT = (By.NAME, "registration_submit")
 
 
-
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
-    USER_ICON =(By.CSS_SELECTOR,".icon-user")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class BasketPageLocators:
     TEXT_EMPTY_BASKET = (By.XPATH, "/html/body/div[2]/div/div[3]/div[2]/p")
-    ITEM_ON_BASKET = (By.CSS_SELECTOR,".col-sm-3.h3")
-
-
+    ITEM_ON_BASKET = (By.CSS_SELECTOR, ".col-sm-3.h3")

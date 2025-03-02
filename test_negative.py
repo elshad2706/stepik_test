@@ -22,7 +22,7 @@ def test_guest_cant_see_success_message(browser):
     product_page.should_not_be_success_message()
 
 
-@pytest.mark.skip(reason="fixing this bug later")
+@pytest.mark.xfail(reason="fixing this bug later")
 def test_message_disappeared_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     product_page = ProductPage(browser, link)
