@@ -12,13 +12,14 @@ urls = [f"{link}/?promo=offer{no}" for no in range(10)]
 bugged_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer7"
 okay_link1 = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"
 okay_link2 = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8"
+link_2 = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 
 
 @pytest.mark.need_review
 # @pytest.mark.parametrize('link', urls)
 @pytest.mark.parametrize('links', [okay_link1, pytest.param(bugged_link, marks=pytest.mark.xfail), okay_link2])
 def test_guest_can_add_product_to_basket(links, browser):
-    product_page = ProductPage(browser, link)
+    product_page = ProductPage(browser, links)
     product_page.open()
     product_page.get_item_before()
     product_page.get_price_before()
@@ -28,7 +29,6 @@ def test_guest_can_add_product_to_basket(links, browser):
 
 
 def test_guest_should_see_login_link_on_product_page(browser):
-    link_2 = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link_2)
     page.open()
     page.should_be_login_link()
@@ -36,7 +36,6 @@ def test_guest_should_see_login_link_on_product_page(browser):
 
 @pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
-    link_2 = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link_2)
     page.open()
     page.go_to_login_page()

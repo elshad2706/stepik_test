@@ -21,7 +21,7 @@ class ProductPage(BasePage):
         price_value = WebDriverWait(self.browser, 10).until(
             EC.visibility_of_element_located(MainPageLocators.PRICE_VALUE))
         return price_value.text
-# Подумать как убрать костыль с явным сравнением текста
+
     def compare_item_and_price_after(self):
         message_full_text = self.get_element_text(*MainPageLocators.MESSAGE_ADDED_TO_BASKET)
         print("спарсенный текст", message_full_text)
