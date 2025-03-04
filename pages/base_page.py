@@ -35,7 +35,7 @@ class BasePage:
         return True
 
     def is_not_element_present(self, how, what,
-                               timeout=4):  # упадет,как только увидит отысковаемый элемент.Не появился:тест зеленый
+                               timeout=4):  # упадет,как только увидит отысковаемый элемент.Если не появился:пройден
         try:
             WebDriverWait(self.browser, timeout).until(
                 EC.presence_of_element_located((how, what)))
@@ -78,4 +78,4 @@ class BasePage:
 
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
-                                                                     " probably unauthorised user"
+                                                                     "probably unauthorised user"

@@ -25,7 +25,7 @@ class LoginPage(BasePage):
         assert self.is_element_present(*RegisterPageLocators.INPUT_EMAIL), "Отсутствует инпут логина"
         assert self.is_element_present(*RegisterPageLocators.INPUT_PASSWORD), "Отсутствует инпут пароля"
         assert self.is_element_present(*RegisterPageLocators.INPUT_REPEAT_PASSWORD), "Отсутствует инпут повторного ввода пароля"
-        assert self.is_element_present(*RegisterPageLocators.BUTTON_REGISTRATION_SUBMIT), "Отсуствует кнопка войти"
+        assert self.is_element_present(*RegisterPageLocators.BUTTON_REGISTRATION_SUBMIT), "Отсутствует кнопка войти"
 
     def register_new_user(self, email, password):
         WebDriverWait(self.browser, 3).until(
