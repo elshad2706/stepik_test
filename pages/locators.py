@@ -11,8 +11,9 @@ class MainPageLocators:
     NAME_ITEM = (By.XPATH, "/html/body/div[2]/div/div[2]/div[2]/article/div[1]/div[2]/h1")
     PRICE_VALUE = (By.XPATH, "/html/body/div[2]/div/div[2]/div[2]/article/div[1]/div[2]/p[1]")
     MESSAGE_ADDED_TO_BASKET = (By.XPATH, "/html/body/div[2]/div/div[1]/div[1]/div")
-    MESSAGE_PRICE_IN_BASKET = (By.XPATH, "/html/body/div[2]/div/div[1]/div[3]/div/p[1]/strong")
+    PRICE_IN_BASKET = (By.XPATH, "/html/body/div[2]/div/div[1]/div[3]/div/p[1]/strong")
     VIEW_BASKET = (By.CSS_SELECTOR, ".btn-group")
+    TOTAL_PRICE_MESSAGE = (By.XPATH,"/html/body/div[2]/div/div[1]/div[3]/div/p[1]")
 
 
 class LoginPageLocators:
