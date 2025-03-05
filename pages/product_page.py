@@ -12,24 +12,26 @@ class ProductPage(BasePage):
         button_basket = self.browser.find_element(*MainPageLocators.ADD_TO_BASKET)
         button_basket.click()
 
-    def get_item_before(self):
+    def get_name_product(self):
         name_item = WebDriverWait(self.browser, 10).until(
             EC.visibility_of_element_located(MainPageLocators.NAME_ITEM))
         return name_item.text
 
-    def get_price_before(self):
+    def get_price_product(self):
         price_value = WebDriverWait(self.browser, 10).until(
             EC.visibility_of_element_located(MainPageLocators.PRICE_VALUE))
         return price_value.text
 
-    def compare_item_and_price_after(self):
-        message_full_text = self.get_element_text(*MainPageLocators.MESSAGE_ADDED_TO_BASKET)
-        print("спарсенный текст", message_full_text)
-        print(f"{ProductPage.get_item_before(self)} has been added to your basket.")
-        assert f"{ProductPage.get_item_before(self)} has been added to your basket." == message_full_text, "Отсутствует сообщение о добавление товара в корзину"
+    def compare_item_and_price_after_add_basket(self):
+        price_in_basket = self.get_element_text(*MainPageLocators.MESSAGE_PRICE_IN_BASKET)
+        print("втоваре", ProductPage.get_price_product(self))
+        print("в корзине", price_in_basket)
+        assert ProductPage.get_price_product(self) == price_in_basket, "Стоимость корзины,после добаления товара, не совпадает с ценой товара"
 
-        price_of_basket = self.get_element_text(*MainPageLocators.MESSAGE_PRICE_IN_BASKET)
-        assert ProductPage.get_price_before(self) in price_of_basket, "Стоимость корзины не совпадает с ценой товара"
+        assert self.is_element_present(*MainPageLocators.MESSAGE_ADDED_TO_BASKET), "Отсутствует сообщение о добавление товара в корзину"
+
+        message_full_text = self.get_element_text(*MainPageLocators.MESSAGE_ADDED_TO_BASKET)
+        assert f"{ProductPage.get_name_product(self)}" in message_full_text, "Название товара в сообщении не совпадает с тем товаром, который мы добавили."
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(
