@@ -22,10 +22,12 @@ class ProductPage(BasePage):
             EC.visibility_of_element_located(MainPageLocators.PRICE_VALUE))
         return price_value.text
 
-    def compare_item_and_price_after_add_basket(self):
+    def should_be_correct_cost_in_cart(self):
         assert self.is_element_present(*MainPageLocators.TOTAL_PRICE_MESSAGE), "Отсутствует cообщение со стоимостью корзины"
         price_in_basket = self.get_element_text(*MainPageLocators.PRICE_IN_BASKET)
         assert ProductPage.get_price_product(self) == price_in_basket, "Стоимость корзины после добавления товара, не совпадает с ценой товара"
+
+    def should_be_the_product_in_cart(self):
         assert self.is_element_present(*MainPageLocators.MESSAGE_ADDED_TO_BASKET), "Отсутствует сообщение о добавление товара в корзину"
         message_full_text = self.get_element_text(*MainPageLocators.MESSAGE_ADDED_TO_BASKET)
         assert f"{ProductPage.get_name_product(self)}" in message_full_text, "Название товара в сообщении не совпадает с тем товаром, который мы добавили."

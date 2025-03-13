@@ -25,7 +25,8 @@ def test_guest_can_add_product_to_basket(links, browser):
     product_page.get_price_product()
     product_page.add_to_basket()
     product_page.solve_quiz_and_get_code()
-    product_page.compare_item_and_price_after_add_basket()
+    product_page.should_be_correct_cost_in_cart()
+    product_page.should_be_the_product_in_cart()
 
 
 def test_guest_should_see_login_link_on_product_page(browser):
@@ -39,6 +40,8 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link_product_2)
     page.open()
     page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
+    login_page.should_be_login_page()
 
 
 @pytest.mark.need_review
@@ -47,6 +50,7 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page = BasketPage(browser, link_product_3)
     page.open()
     page.quest_click_button_view_basket()
+    basket_page = BasketPage(browser, browser.current_url)
     page.product_is_not_exist_in_basket()
     page.text_about_basket_empty()
 
@@ -73,4 +77,5 @@ class TestUserAddToBasketFromProductPage:
         product_page.get_name_product()
         product_page.get_price_product()
         product_page.add_to_basket()
-        product_page.compare_item_and_price_after_add_basket()
+        product_page.should_be_correct_cost_in_cart()
+        product_page.should_be_the_product_in_cart()
